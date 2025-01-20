@@ -4,7 +4,9 @@
 alias -g -- "--help=\\--help | bat -lhelp"
 (($+commands[bat])) && bat() {command bat --color=always -p $@} || bat() {command cat}
 if ((! $+commands[mdcat])); then
-  if (($+commands[paper])); then
+  if (($+commands[glow])); then
+    mdcat() {command glow $@}
+  elif (($+commands[paper])); then
     mdcat() {command paper $@}
   elif (($+commands[mdless])); then
     mdcat() {command mdless $@}
